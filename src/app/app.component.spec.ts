@@ -1,29 +1,38 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import TranslateServiceSpec from './shared/mocks/translate.service.spec';
 
 describe('AppComponent', () => {
+  let app: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let translate: TranslateService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [
+        AppComponent,
+        TranslateModule
+      ],
+      providers: [
+        { provide: TranslateService, useClass: TranslateServiceSpec }
+      ],
+
     }).compileComponents();
+
+    translate = TestBed.inject(TranslateService);
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    const defaultLangSpy = spyOn(translate, 'setDefaultLang');
+    const useSpy = spyOn(translate, 'use');
 
-  it(`should have the 'angular-af' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-af');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-af');
+    
+    expect(app).toBeTruthy();
+    expect(defaultLangSpy).toHaveBeenCalledWith('en-US');
+    expect(useSpy).toHaveBeenCalled();
   });
 });
