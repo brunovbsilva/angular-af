@@ -1,1 +1,5 @@
-<p>layout works!</p>
+<app-header #header id="header" (onMenuClick)="sidebar.toggleSidebar()"></app-header>
+<app-sidebar #sidebar id="sidebar"></app-sidebar>
+<div id="page-content">
+  <router-outlet></router-outlet>
+</div>

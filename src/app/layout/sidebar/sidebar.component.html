@@ -1,0 +1,15 @@
+@if (isOpen()) {
+  @defer () {
+    <div class="buttons">
+      <button AFButton theme="primary">AAAA</button>
+      <button AFButton theme="accent">AAAA</button>
+      <button AFButton theme="warn">AAAA</button>
+      <button AFButton theme="error">AAAA</button>
+      <button AFButton disabled>AAAA</button>
+    </div>
+  }
+  @placeholder (minimum 300ms) {
+    <p>Loading...</p>
+  }
+}
+

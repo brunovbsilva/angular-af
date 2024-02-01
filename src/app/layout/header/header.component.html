@@ -1,1 +1,9 @@
-<p>header works!</p>
+<header>
+  <button AFIconButton icon="menu" (click)="onMenuClick.emit()"></button>
+  <button AFIconButton icon="more_vert" theme="primary" (click)="onMenuClick.emit()"></button>
+  <button AFIconButton icon="logout" theme="accent" (click)="onMenuClick.emit()"></button>
+  <button AFIconButton icon="download" theme="warn" (click)="onMenuClick.emit()"></button>
+  <button AFIconButton icon="upload" theme="error" (click)="onMenuClick.emit()"></button>
+  <button AFIconButton icon="filter_alt" disabled (click)="onMenuClick.emit()"></button>
+  <h2 id="project-name">{{ 'app-name' | translate }}</h2>
+</header>
