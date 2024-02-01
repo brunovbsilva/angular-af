@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { AFInputDirective } from './af-input.directive';
-import { ElementRefSpec } from '../mocks/elemente-ref.spec';
+import { ElementRefSpec } from '../../mocks/elemente-ref.spec';
 import { TestBed } from '@angular/core/testing';
 
 describe('AFInputDirective', () => {

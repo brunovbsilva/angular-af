@@ -1,0 +1,1 @@
+export type Theme = 'primary' | 'accent' | 'warn' | 'error';

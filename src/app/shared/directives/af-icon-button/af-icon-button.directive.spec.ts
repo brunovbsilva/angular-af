@@ -1,11 +1,11 @@
 import { ElementRef } from '@angular/core';
-import { AFButtonDirective } from './af-button.directive';
+import { AFIconButtonDirective } from './af-icon-button.directive';
 import { TestBed } from '@angular/core/testing';
 import { ElementRefSpec } from '../../mocks/elemente-ref.spec';
 
-describe('AfButtonDirective', () => {
+describe('AfIconButtonDirective', () => {
   let elementRef: ElementRef;
-  let directive: AFButtonDirective;
+  let directive: AFIconButtonDirective;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -17,13 +17,7 @@ describe('AfButtonDirective', () => {
   });
 
   it('should create an instance', () => {
-    directive = new AFButtonDirective(elementRef);
+    directive = new AFIconButtonDirective(elementRef);
     expect(directive).toBeTruthy();
-  });
-  it('should set style', () => {
-    const spy = spyOn(elementRef.nativeElement.classList, 'add');
-    directive = new AFButtonDirective(elementRef);
-    expect(spy).toHaveBeenCalledWith(`af-button`);
-    expect(spy).toHaveBeenCalledWith(`af-button--primary`);
   });
 });

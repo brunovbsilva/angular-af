@@ -1,16 +1,17 @@
-import { Directive, ElementRef, Input } from '@angular/core';
-
-export type Theme = 'primary' | 'accent' | 'warn' | 'error';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Theme } from '../models/theme.type';
 
 @Directive({
   selector: '[AFButton]',
   standalone: true
 })
-export class AFButtonDirective {
+export class AFButtonDirective implements OnInit {
 
   @Input() theme: Theme = 'primary';
 
-  constructor(private element: ElementRef) {
+  constructor(private element: ElementRef) { }
+
+  ngOnInit(): void {
     this.setStyle();
   }
 

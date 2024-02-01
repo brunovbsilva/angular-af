@@ -1,7 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appAfInput]',
+  selector: '[AFInput]',
   standalone: true
 })
 export class AFInputDirective {

@@ -1,0 +1,150 @@
+@import '../palettes';
+@import '../shadows';
+
+@mixin BaseButton {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  margin: 5px;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &--primary {
+    background: map-get($AF-Primary, 500);
+    color: map-get($AF-Primary, contrast, 500);
+    &:hover {
+      background: map-get($AF-Primary, 400);
+      color: map-get($AF-Primary, contrast, 400);
+    }
+    &:active {
+      background: map-get($AF-Primary, 300);
+      color: map-get($AF-Primary, contrast, 300);
+    }
+  }
+  &--accent {
+    background: map-get($AF-Accent, 500);
+    color: map-get($AF-Accent, contrast, 500);
+    &:hover {
+      background: map-get($AF-Accent, 400);
+      color: map-get($AF-blue, contrast, 400);
+    }
+    &:active {
+      background: map-get($AF-Accent, 300);
+      color: map-get($AF-Accent, contrast, 300);
+    }
+  }
+  &--warn {
+    background: map-get($AF-Warn, 500);
+    color: map-get($AF-Warn, contrast, 500);
+    &:hover {
+      background: map-get($AF-Warn, 400);
+      color: map-get($AF-Warn, contrast, 400);
+    }
+    &:active {
+      background: map-get($AF-Warn, 300);
+      color: map-get($AF-Warn, contrast, 300);
+    }
+  }
+  &--error {
+    background: map-get($AF-black, 500);
+    color: map-get($AF-black, contrast, 500);
+    &:hover {
+      background: map-get($AF-black, 400);
+      color: map-get($AF-black, contrast, 400);
+    }
+    &:active {
+      background: map-get($AF-black, 300);
+      color: map-get($AF-black, contrast, 300);
+    }
+  }
+  &:active, &:hover {
+    @include AF-Shadow-Primary;
+  }
+  &:disabled {
+    background: map-get($AF-black, 300);
+    color: map-get($AF-black, 100);
+    cursor: default;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@mixin BaseIconButton {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  color: map-get($AF-Primary, contrast, 900);
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &--primary {
+    color: map-get($AF-Primary, 500);
+  }
+  &--accent {
+    color: map-get($AF-Accent, 500);
+  }
+  &--warn {
+    color: map-get($AF-Warn, 500);
+  }
+  &--error {
+    color: map-get($AF-black, 500);
+  }
+  &:not(:disabled) {
+    &:hover {
+      ::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.05);
+      }
+    }
+    &:active {
+      ::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+      }
+    }
+  }
+  &:disabled {
+    color: map-get($AF-black, 200);
+    cursor: default;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.af-button {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 5px;
+  @include BaseButton;
+}
+
+.af-icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include BaseIconButton;
+}
