@@ -2,10 +2,22 @@
 @import 'shadows';
 @import 'themes';
 @import 'typography';
+@import 'elements/buttons';
 
 html, body {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, span {
+  margin: 0;
+  padding: 0;
 }
