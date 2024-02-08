@@ -8,5 +8,6 @@ export class ElementRefSpec {
       remove: () => {},
     },
     appendChild: () => {},
+    querySelector: (value: string) => {return document.createElement('div')},
   };
 }

@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, Host, HostListener, Inject, computed, effect, input, signal } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Inject, effect, input, signal } from '@angular/core';
 
 export type VerticalOpen = 'top' | 'bottom';
 export type HorizontalOpen = 'left' | 'right';
@@ -21,18 +21,10 @@ export class AFDropdownDirective implements AfterViewInit {
 
   constructor(private element: ElementRef, @Inject(DOCUMENT) private document: Document) {
     effect(() => {
-      if (this.isOpen())
-        this._triggerFor.classList.add('af-dropdown__list--open');
-      else
-        this._triggerFor.classList.remove('af-dropdown__list--open');
-
+      if (this.isOpen()) this._triggerFor.classList.add('af-dropdown__list--open');
+      else this._triggerFor.classList.remove('af-dropdown__list--open');
       this.setTransform();
-    })
-    effect(() => {
-      if(this._triggerFor) {
-        this.setTransform();
-      }
-    })
+    });
   }
 
   private setTransform(): void {
@@ -54,16 +46,16 @@ export class AFDropdownDirective implements AfterViewInit {
     this.setClasses();
   }
 
-  private toggleDropdown(): void {
-    this.isOpen.update(x => !x);
-  }
-
   private setClasses(): void {
     this.element.nativeElement.classList.add('af-dropdown');
     this._trigger.classList.add('af-dropdown__trigger');
     this._triggerFor.classList.add('af-dropdown__list');
     this._triggerFor.querySelectorAll('a')
       .forEach((element: HTMLElement) => element.classList.add('af-dropdown__item'));
+  }
+
+  private toggleDropdown(): void {
+    this.isOpen.update(x => !x);
   }
 
   @HostListener('document:click', ['$event'])
@@ -75,8 +67,8 @@ export class AFDropdownDirective implements AfterViewInit {
     }
   }
 
-  @HostListener('document:scroll')
-  @HostListener('document:resize')
-  private checkDropdownPosition(): void {}
+  // @HostListener('document:scroll')
+  // @HostListener('document:resize')
+  // private onScrollOrResize(): void {}
 
 }
