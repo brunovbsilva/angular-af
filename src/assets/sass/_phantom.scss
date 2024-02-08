@@ -1,0 +1,36 @@
+@import 'palettes';
+
+$Low-gray: map-get($AF-black, 50);
+$Mid-gray: map-get($AF-black, 100);
+
+@mixin AF-Phantom {
+  background: linear-gradient(to right, $Mid-gray, $Low-gray, $Low-gray, $Low-gray);
+  animation: gradient 0.7s infinite;
+  color: transparent;
+}
+
+@keyframes gradient {
+  0% {
+      background: linear-gradient(to right, $Mid-gray, $Low-gray, $Low-gray, $Low-gray);
+  }
+
+  20% {
+      background: linear-gradient(to right, $Mid-gray, $Mid-gray, $Low-gray, $Low-gray);
+  }
+
+  40% {
+      background: linear-gradient(to right, $Low-gray, $Mid-gray, $Mid-gray, $Low-gray);
+  }
+
+  60% {
+      background: linear-gradient(to right, $Low-gray, $Low-gray, $Mid-gray, $Mid-gray);
+  }
+
+  80% {
+      background: linear-gradient(to right, $Low-gray, $Low-gray, $Low-gray, $Mid-gray);
+  }
+
+  100% {
+      background: linear-gradient(to right, $Low-gray, $Low-gray, $Low-gray, $Low-gray);
+  }
+}

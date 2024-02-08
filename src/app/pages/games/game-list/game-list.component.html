@@ -1,0 +1,14 @@
+<div class="list-header">
+  <h2 class="list-header__title">{{title()}}</h2>
+  <a class="list-header__see-all" (click)="onSeeAll.emit()">Ver todos</a>
+</div>
+<div class="game-list" AFSwipable>
+  @for (game of games(); track $index) {
+    @defer () {
+      <app-game-card [card]="game" class="game-card"></app-game-card>
+    }
+    @loading (minimum 300ms) {
+      <div class="game-card-loading"></div>
+    }
+  }
+</div>

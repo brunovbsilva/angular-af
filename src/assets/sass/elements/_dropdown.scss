@@ -1,19 +1,28 @@
+@import '../shadows';
+
 .af-dropdown {
   position: relative;
-  .af-dropdown__trigger {}
   .af-dropdown__list {
+    z-index: 100;
     position: absolute;
     top: 0;
     left: 0;
     display: none;
-    border: 1px solid rgba(0, 0, 0);
+    background-color: white;
+    border-radius: 6px;
+    padding: 6px 0;
+    @include AF-Shadow;
     .af-dropdown__item {
       padding: 10px;
-      min-width: 200px;
-      background-color: white;
+      min-width: 100px;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      text-wrap: nowrap;
+      gap: 1rem;
       cursor: pointer;
       &:hover {
-        background: gray;
+        background: #30303030;
       }
     }
     &--open {

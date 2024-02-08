@@ -61,7 +61,7 @@
     }
   }
   &:active, &:hover {
-    @include AF-Shadow-Primary;
+    @include AF-Shadow;
   }
   &:disabled {
     background: map-get($AF-black, 300);

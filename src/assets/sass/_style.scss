@@ -2,6 +2,7 @@
 @import 'shadows';
 @import 'themes';
 @import 'typography';
+@import 'phantom';
 @import 'elements/buttons';
 @import 'elements/dropdown';
 
@@ -21,4 +22,26 @@ html, body {
 h1, h2, h3, h4, h5, h6, p, span {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+p, span {
+  &:not(.material-symbols-rounded) {
+    font-size: 1rem;
+    font-weight: normal;
+  }
 }
