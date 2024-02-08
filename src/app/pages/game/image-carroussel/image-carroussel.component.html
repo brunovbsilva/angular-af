@@ -1,0 +1,14 @@
+<div class="image-carroussel" AFSwipable (rightSwipe)="previous()" (leftSwipe)="next()">
+  <img [src]="currentImage()" alt="carroussel-image" class="image-carroussel__image">
+  <span class="image-carroussel__counter">{{counter()}}</span>
+  <div class="image-carroussel__dots">
+    @for (dot of imageUrls(); track $index) {
+      @if(visibleDots().includes($index)) {
+        <div class="image-carroussel__dot" [class.image-carroussel__dot--active]="$index == currentIndex()"></div>
+      }
+      @else if (cornerDots().includes($index)) {
+        <div class="image-carroussel__dot image-carroussel__dot--corner"></div>
+      }
+    }
+  </div>
+</div>

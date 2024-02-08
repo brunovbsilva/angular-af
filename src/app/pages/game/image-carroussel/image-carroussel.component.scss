@@ -1,0 +1,46 @@
+@import '../../../../assets/sass/style';
+
+.image-carroussel {
+  width: 100%;
+  height: 300px;
+  padding: .5rem;
+  position: relative;
+  .image-carroussel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .image-carroussel__counter {
+    z-index: 1;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: .5rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+  }
+  .image-carroussel__dots {
+    z-index: 1;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: .25rem;
+    align-items: center;
+    .image-carroussel__dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background-color: map-get($AF-black , 100);
+      &--active {
+        background-color: map-get($AF-Accent, 500);
+      }
+      &--corner {
+        width: .25rem;
+        height: .25rem;
+      }
+    }
+  }
+}
