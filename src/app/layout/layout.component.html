@@ -1,18 +1,5 @@
-<app-header #header id="header" (onMenuClick)="sidebar.toggleSidebar()"></app-header>
-<app-sidebar #sidebar id="sidebar"></app-sidebar>
-<div id="page-content">
+<app-header #header id="header"></app-header>
+<app-menu #menu></app-menu>
+<div id="page-content" AFSwipable (leftSwipe)="menu.next()" (rightSwipe)="menu.previous()">
   <router-outlet></router-outlet>
-
-  <div class="flexcont">
-    <div AFDropdown trigger="#menu" triggerFor="#menu-list" [verticalOpen]="verticalOpen()" [horizontalOpen]="horizontalOpen()" id="dropdown">
-      <button AFIconButton theme="primary" icon="menu" id="menu"></button>
-      <div id="menu-list">
-        <a>test 1</a>
-        <a>test 2</a>
-        <a>test 3</a>
-        <a>test 4</a>
-      </div>
-    </div>
-  </div>
-
 </div>

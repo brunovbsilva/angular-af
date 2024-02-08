@@ -1,4 +1,8 @@
-.flexcont {
+:host{
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  height: 100vh;
+  #page-content {
+    flex: 1 1 auto;
+  }
 }

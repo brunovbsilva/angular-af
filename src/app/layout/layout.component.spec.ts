@@ -5,14 +5,13 @@ import { HeaderComponent } from './header/header.component';
 import { By } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import TranslateServiceSpec from '../shared/mocks/translate.service.spec';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { DebugElement } from '@angular/core';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
 
-  let header: HeaderComponent;
-  let sidebar: SidebarComponent;
+  let header: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,14 +28,12 @@ describe('LayoutComponent', () => {
     
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
-    header = fixture.debugElement.query(By.css('#header')).nativeElement;
-    sidebar = fixture.debugElement.query(By.css('#sidebar')).nativeElement;
     fixture.detectChanges();
+    header = fixture.debugElement.query(By.css('#header'));
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(header).toBeTruthy();
-    expect(sidebar).toBeTruthy();
   });
 });

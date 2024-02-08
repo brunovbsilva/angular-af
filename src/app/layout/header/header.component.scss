@@ -3,6 +3,11 @@
 header {
   padding: 12px 16px;
   background: map-get($AF-black, 500);
-  color: map-get($AF-black, contrast, 500);
+  #project-name {
+    color: map-get($AF-black, contrast, 500);
+  }
   display: flex;
+  .spacer {
+    flex: 1;
+  }
 }
