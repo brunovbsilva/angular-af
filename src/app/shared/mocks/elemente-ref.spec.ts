@@ -7,5 +7,6 @@ export class ElementRefSpec {
       add: () => {},
       remove: () => {},
     },
+    appendChild: () => {},
   };
 }
