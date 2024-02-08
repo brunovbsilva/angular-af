@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, input } from '@angular/core';
 import { Theme } from '../models/theme.type';
 
 @Directive({
@@ -7,7 +7,7 @@ import { Theme } from '../models/theme.type';
 })
 export class AFButtonDirective implements OnInit {
 
-  @Input() theme: Theme = 'primary';
+  theme = input<Theme>('primary');
 
   constructor(private element: ElementRef) { }
 
@@ -17,7 +17,7 @@ export class AFButtonDirective implements OnInit {
 
   private setStyle(): void {
     this.element.nativeElement.classList.add('af-button');
-    this.element.nativeElement.classList.add(`af-button--${this.theme}`);
+    this.element.nativeElement.classList.add(`af-button--${this.theme()}`);
   }
 
 }

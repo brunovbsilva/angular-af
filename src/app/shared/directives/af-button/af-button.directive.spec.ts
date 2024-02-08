@@ -1,7 +1,8 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, input } from '@angular/core';
 import { AFButtonDirective } from './af-button.directive';
 import { TestBed } from '@angular/core/testing';
 import { ElementRefSpec } from '../../mocks/elemente-ref.spec';
+import { Theme } from '../models/theme.type';
 
 describe('AfButtonDirective', () => {
   let elementRef: ElementRef;
@@ -20,10 +21,21 @@ describe('AfButtonDirective', () => {
     directive = new AFButtonDirective(elementRef);
     expect(directive).toBeTruthy();
   });
-  it('should set style', () => {
-    const spy = spyOn(elementRef.nativeElement.classList, 'add');
-    directive = new AFButtonDirective(elementRef);
-    expect(spy).toHaveBeenCalledWith(`af-button`);
-    expect(spy).toHaveBeenCalledWith(`af-button--primary`);
+
+  describe('set styles', () => {
+    let spyAddClass: jasmine.Spy;
+    const themes: Theme[] = [ 'primary', 'accent', 'warn', 'error' ];
+    themes.forEach(theme => {
+      it(`should set style ${theme}`, () => {
+        spyAddClass = spyOn(elementRef.nativeElement.classList, 'add');
+        directive = new AFButtonDirective(elementRef);
+        directive.theme = input(theme);
+
+        directive.ngOnInit();
+
+        expect(spyAddClass).toHaveBeenCalledWith(`af-button`);
+        expect(spyAddClass).toHaveBeenCalledWith(`af-button--${theme}`);
+      });
+    });
   });
 });
