@@ -1,27 +1,11 @@
 <div class="game-card">
   <img [src]="card().imageUrl" alt="Game card image" class="game-card__image">
   <h3 class="game-card__name">{{ card().name }}</h3>
-  <div class="game-card__info">
-    <div class="game-info__left">
-      <span class="game-info__item">
-        <span class="material-symbols-rounded">schedule</span>
-        <span class="game-card__info-value">
-          {{ dayName() }},
-          {{ card().dateFrom | date: 'HH:mm' }}-{{ card().dateTo | date: 'HH:mm' }}h
-        </span>
-      </span>
-      <span class="game-info__item">
-        <span class="material-symbols-rounded">location_on</span>
-        <span class="game-card__info-value">{{card().location}}</span>
-      </span>
-    </div>
-    <div class="game-info__right">
-      <div class="game-info__date">
-        <span class="game-info__row">{{ month() }}</span>
-        <span class="game-info__row">{{ day() }}</span>
-      </div>
-    </div>
-  </div>
+  <app-game-schedule-info class="game-card__info"
+    [dateFrom]="card().dateFrom"
+    [dateTo]="card().dateTo"
+    [location]="card().location">
+  </app-game-schedule-info>
   <div class="game-card__buttons">
     @for (button of buttons(); track $index) {
       <button AFButton [theme]="button.theme" (click)="button.onClick()">{{button.name}}</button>

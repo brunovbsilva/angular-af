@@ -1,0 +1,21 @@
+<div class="game-info">
+  <div class="game-info__left">
+    <span class="game-info__item">
+      <span class="material-symbols-rounded">schedule</span>
+      <span class="game-card__info-value">
+        {{ dayName() }},
+        {{ dateFrom() | date: 'HH:mm' }}-{{ dateTo() | date: 'HH:mm' }}h
+      </span>
+    </span>
+    <span class="game-info__item">
+      <span class="material-symbols-rounded">location_on</span>
+      <span class="game-card__info-value">{{ location() }}</span>
+    </span>
+  </div>
+  <div class="game-info__right">
+    <div class="game-info__date">
+      <span class="game-info__row">{{ month() }}</span>
+      <span class="game-info__row">{{ day() }}</span>
+    </div>
+  </div>
+</div>

@@ -17,11 +17,7 @@ describe('GameCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        GameCardComponent,
-        TranslateModule
-      ],
-      providers: [
-        { provide: TranslateService, useClass: TranslateServiceSpec }
+        GameCardComponent
       ]
     })
     .compileComponents();
@@ -58,23 +54,8 @@ describe('GameCardComponent', () => {
         it('should have the name', () => expect(gameName.nativeElement.textContent).toBe(gameCardMock.name));
       });
       describe('Info', () => {
-        let gameInfoLeft: DebugElement;
-        let gameInfoRight: DebugElement;
         beforeEach(() => gameInfo = gameCard.query(By.css('.game-card__info')));
         it('should exist', () => expect(gameInfo).toBeTruthy());
-        describe('left', () => {
-          beforeEach(() => gameInfoLeft = gameInfo.query(By.css('.game-info__left')));
-          it('should exist', () => expect(gameInfoLeft).toBeTruthy());
-          it('should have 2 children', () => expect(gameInfoLeft.children.length).toBe(2));
-          it('should have a date on first children', () => expect(gameInfoLeft.children[0].nativeElement.textContent).toContain(component.dayName()));
-          it('should have a location on second children', () => expect(gameInfoLeft.children[1].nativeElement.textContent).toContain(gameCardMock.location));
-        });
-        describe('right', () => {
-          beforeEach(() => gameInfoRight = gameInfo.query(By.css('.game-info__right')));
-          it('should exist', () => expect(gameInfoRight).toBeTruthy());
-          it('should contain the month', () => expect(gameInfoRight.nativeElement.textContent).toContain(component.month()));
-          it('should contain the day', () => expect(gameInfoRight.nativeElement.textContent).toContain(component.day()));
-        });
       });
       describe('Buttons', () => {
         beforeEach(() => gameButtons = gameCard.query(By.css('.game-card__buttons')));
