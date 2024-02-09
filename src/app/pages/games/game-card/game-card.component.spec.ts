@@ -10,14 +10,17 @@ import { By } from '@angular/platform-browser';
 describe('GameCardComponent', () => {
   let component: GameCardComponent;
   let fixture: ComponentFixture<GameCardComponent>;
-  let translate: TranslateService;
 
   let gameCard: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        GameCardComponent
+        GameCardComponent,
+        TranslateModule
+      ],
+      providers: [
+        { provide: TranslateService, useClass: TranslateServiceSpec }
       ]
     })
     .compileComponents();
@@ -25,7 +28,6 @@ describe('GameCardComponent', () => {
     fixture = TestBed.createComponent(GameCardComponent);
     component = fixture.componentInstance;
     component.card = input(gameCardMock);
-    translate = TestBed.inject(TranslateService);
     fixture.detectChanges();
 
     gameCard = fixture.debugElement.query(By.css('.game-card'));
