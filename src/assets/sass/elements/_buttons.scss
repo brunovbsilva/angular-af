@@ -1,71 +1,58 @@
-@import '../palettes';
-@import '../shadows';
+@use 'sass:map';
+@use '../palettes';
+@use '../theming';
+@use '../shadows';
+@use '../prebuilt/main-dark-theme';
+@use '../prebuilt/main-light-theme';
 
-@mixin BaseButton {
+@mixin base-config-button {
   position: relative;
   border: none;
   cursor: pointer;
   user-select: none;
-  margin: 5px;
-
   &:focus {
     border: none;
     outline: none;
   }
+}
+
+@mixin set-colors($palette, $base: 500, $hover: 400, $active: 300) {
+  background: theming.get-color-from-palette($palette, $base);
+  color: get-contrast-color-from-palette($palette, $base);
+  &:hover {
+    background: theming.get-color-from-palette($palette, $hover);
+    color: get-contrast-color-from-palette($palette, $hover);
+  }
+  &:active {
+    background: theming.get-color-from-palette($palette, $active);
+    color: get-contrast-color-from-palette($palette, $active);
+  }
+}
+
+@mixin BaseButton($theme) {
+  @include base-config-button;
+  margin: 5px;
+
+  $current-palettes: map.get($theme, color);
+
   &--primary {
-    background: map-get($AF-Primary, 500);
-    color: map-get($AF-Primary, contrast, 500);
-    &:hover {
-      background: map-get($AF-Primary, 400);
-      color: map-get($AF-Primary, contrast, 400);
-    }
-    &:active {
-      background: map-get($AF-Primary, 300);
-      color: map-get($AF-Primary, contrast, 300);
-    }
+    @include set-colors(map.get($current-palettes, primary));
   }
   &--accent {
-    background: map-get($AF-Accent, 500);
-    color: map-get($AF-Accent, contrast, 500);
-    &:hover {
-      background: map-get($AF-Accent, 400);
-      color: map-get($AF-blue, contrast, 400);
-    }
-    &:active {
-      background: map-get($AF-Accent, 300);
-      color: map-get($AF-Accent, contrast, 300);
-    }
+    @include set-colors(map.get($current-palettes, accent));
   }
   &--warn {
-    background: map-get($AF-Warn, 500);
-    color: map-get($AF-Warn, contrast, 500);
-    &:hover {
-      background: map-get($AF-Warn, 400);
-      color: map-get($AF-Warn, contrast, 400);
-    }
-    &:active {
-      background: map-get($AF-Warn, 300);
-      color: map-get($AF-Warn, contrast, 300);
-    }
+    @include set-colors(map.get($current-palettes, warn));
   }
   &--error {
-    background: map-get($AF-black, 500);
-    color: map-get($AF-black, contrast, 500);
-    &:hover {
-      background: map-get($AF-black, 400);
-      color: map-get($AF-black, contrast, 400);
-    }
-    &:active {
-      background: map-get($AF-black, 300);
-      color: map-get($AF-black, contrast, 300);
-    }
+    @include set-colors(map.get($current-palettes, error));
   }
   &:active, &:hover {
     @include AF-Shadow;
   }
   &:disabled {
-    background: map-get($AF-black, 300);
-    color: map-get($AF-black, 100);
+    background: map.get($gray-palette, 300);
+    color: map.get($gray-palette, 100);
     cursor: default;
     border: none;
     outline: none;
@@ -73,29 +60,24 @@
   }
 }
 
-@mixin BaseIconButton {
-  position: relative;
-  border: none;
-  cursor: pointer;
-  user-select: none;
+@mixin BaseIconButton($theme) {
+  @include base-config-button;
   background: transparent;
-  color: map-get($AF-Primary, contrast, 900);
 
-  &:focus {
-    border: none;
-    outline: none;
-  }
+  $current-palettes: map.get($theme, color);
+  color: white;
+
   &--primary {
-    color: map-get($AF-Primary, 500);
+    color: map.get(map.get($current-palettes, primary), 500);
   }
   &--accent {
-    color: map-get($AF-Accent, 500);
+    color: map.get(map.get($current-palettes, accent), 500);
   }
   &--warn {
-    color: map-get($AF-Warn, 500);
+    color: map.get(map.get($current-palettes, warn), 500);
   }
   &--error {
-    color: map-get($AF-black, 500);
+    color: map.get(map.get($current-palettes, error), 500);
   }
   &:not(:disabled) {
     &:hover {
@@ -124,7 +106,7 @@
     }
   }
   &:disabled {
-    color: map-get($AF-black, 200);
+    color: map.get($gray-palette, 200);
     cursor: default;
     border: none;
     outline: none;
@@ -139,12 +121,12 @@
   text-transform: uppercase;
   padding: 4px 16px;
   border-radius: 5px;
-  @include BaseButton;
+  @include BaseButton(main-light-theme.$theme);
 }
 
 .af-icon-button {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  @include BaseIconButton;
+  @include BaseIconButton(main-light-theme.$theme);
 }

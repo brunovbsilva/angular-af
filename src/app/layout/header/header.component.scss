@@ -1,10 +1,11 @@
+@use 'sass:map';
 @import '../../../assets/sass/style';
 
 header {
   padding: 12px 16px;
-  background: map-get($AF-black, 500);
+  background: map.get($gray-palette, 500);
   #project-name {
-    color: map-get($AF-black, contrast, 500);
+    color: map.get($gray-palette, contrast, 500);
   }
   display: flex;
   .spacer {

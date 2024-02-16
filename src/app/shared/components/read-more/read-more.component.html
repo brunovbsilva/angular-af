@@ -1,0 +1,9 @@
+<p class="read-more read-more--less-lines">
+  @if (readMoreNeeded()) {
+    <span class="read-more__text">{{ textToShow() }}</span>
+    <span class="read-more__action" (click)="toggleShowAll()">{{ showAllText() }}</span>
+  }
+  @else {
+    <span>{{ text() }}</span>
+  }
+</p>

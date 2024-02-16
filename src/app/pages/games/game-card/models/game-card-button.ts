@@ -1,5 +1,7 @@
+import { Router } from "@angular/router";
 import { Theme } from "../../../../shared/directives/models/theme.type";
 import { IGameCardButton } from "../interfaces/game-card-button.interface";
+import { inject } from "@angular/core";
 
 export class AcceptButton implements IGameCardButton {
   name: string;
@@ -8,9 +10,11 @@ export class AcceptButton implements IGameCardButton {
     this.name = name;
     this.theme = "primary";
   }
-  onClick(): void {
+  onClick(event: MouseEvent): void {
+    event.stopPropagation();
     throw new Error("Method not implemented.");
   }
+
 }
 
 export class RejectButton implements IGameCardButton {
@@ -20,7 +24,8 @@ export class RejectButton implements IGameCardButton {
     this.name = name;
     this.theme = "error";
   }
-  onClick(): void {
+  onClick(event: MouseEvent): void {
+    event.stopPropagation();
     throw new Error("Method not implemented.");
   }
 }
@@ -32,7 +37,8 @@ export class JoinButton implements IGameCardButton {
     this.name = name;
     this.theme = "accent";
   }
-  onClick(): void {
+  onClick(event: MouseEvent): void {
+    event.stopPropagation();
     throw new Error("Method not implemented.");
   }
 }

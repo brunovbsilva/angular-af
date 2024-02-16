@@ -1,7 +1,7 @@
 import { Component, effect, input, signal } from '@angular/core';
 import { IMenuItem } from './interfaces/menu-item.interface';
 import { MenuItem } from './models/menu-item';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -17,14 +17,12 @@ export class MenuComponent {
   menus = input<IMenuItem[]>([
     new MenuItem('/', '', 'home'),
     new MenuItem('/games', 'Games', ''),
-    new MenuItem('/', 'Played', ''),
+    new MenuItem('/chats', 'Chats', ''),
   ]);
-  currentMenu = signal<number>(0);
+  currentMenu = signal<number>(this.menus().findIndex(menu => this.router.url == menu.route));
 
-  constructor() {
-    effect(() => {
-      this.menus()[this.currentMenu()].active();
-    });
+  constructor(private router: Router) {
+    effect(() => this.menus()[this.currentMenu()].active());
   }
 
   next() {

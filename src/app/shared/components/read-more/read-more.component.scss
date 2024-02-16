@@ -1,0 +1,11 @@
+.read-more {
+  overflow: hidden;
+  text-wrap: wrap;
+  .read-more__action {
+    color: blue;
+    text-wrap: nowrap;
+  }
+  &--less-lines {
+    // max-height: 44px;
+  }
+}

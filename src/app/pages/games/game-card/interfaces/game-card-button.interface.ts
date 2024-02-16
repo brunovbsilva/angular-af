@@ -3,5 +3,5 @@ import { Theme } from "../../../../shared/directives/models/theme.type";
 export interface IGameCardButton {
   name: string;
   theme: Theme;
-  onClick(): void;
+  onClick(event: MouseEvent): void;
 }

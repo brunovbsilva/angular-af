@@ -1,0 +1,58 @@
+@import '../../../assets/sass/style';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: auto;
+  height: 100%;
+  padding: .75rem;
+}
+
+// defer loading
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  .image {
+    width: 100%;
+    height: 300px;
+    @include AF_Phantom;
+  }
+  .title {
+    width: 100%;
+    height: 30px;
+    @include AF_Phantom;
+  }
+  .schedule {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    .left {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      .row {
+        width: 100%;
+        height: 24px;
+        @include AF_Phantom;
+      }
+    }
+    .right {
+      width: 46px;
+      height: 62px;
+      @include AF_Phantom;
+    }
+  }
+  .description {
+    width: 100%;
+    height: 100px;
+    @include AF_Phantom;
+  }
+  .card {
+    width: 100%;
+    height: 150px;
+    @include AF_Phantom;
+  }
+}

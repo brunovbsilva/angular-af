@@ -1,1 +1,22 @@
-<p>game works!</p>
+@defer () {
+  <app-image-carroussel [imageUrls]="images" class="game-carroussel"></app-image-carroussel>
+  <h2 class="game-title">{{lorem3}}</h2>
+  <app-game-schedule-info [dateFrom]="date()" [dateTo]="date()" [location]="lorem3" class="game-schedule"></app-game-schedule-info>
+  <app-read-more [text]="lorem50" class="game-description"></app-read-more>
+  <app-user-card class="game-creator-card"></app-user-card>
+}
+@loading (minimum 1000ms) {
+  <div class="loading-page">
+    <div class="image"></div>
+    <div class="title"></div>
+    <div class="schedule">
+      <div class="left">
+        <div class="row"></div>
+        <div class="row"></div>
+      </div>
+      <div class="right"></div>
+    </div>
+    <div class="description"></div>
+    <div class="card"></div>
+  </div>
+}

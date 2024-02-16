@@ -1,3 +1,4 @@
+@use 'sass:map';
 @import '../../../../assets/sass/style';
 
 .list-header {
@@ -6,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
   a {
-    color: map-get($AF-Accent, 300)
+    color: map.get($purple-palette, 300)
   }
 }
 .game-list {

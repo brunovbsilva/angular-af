@@ -1,0 +1,25 @@
+@use 'sass:map';
+@import '../../../../assets/sass/style';
+
+.chip {
+  background-color: transparent;
+  border: 1px solid map.get($gray-palette, 500);
+  border-radius: 1rem;
+  padding: .15rem .75rem;
+  font-size: .75rem !important;
+  &--primary {
+    background-color: map.get($green-palette, 50);
+    color: map.get($green-palette, 500);
+    border-color: map.get($green-palette, 500);
+  }
+  &--accent {
+    background-color: map.get($purple-palette, 50);
+    color: map.get($purple-palette, 500);
+    border-color: map.get($purple-palette, 500);
+  }
+  &--warn {
+    background-color: map.get($orange-palette, 50);
+    color: map.get($orange-palette, 500);
+    border-color: map.get($orange-palette, 500);
+  }
+}

@@ -1,6 +1,8 @@
 <nav class="menus">
   @for (menu of menus(); track $index) {
-    <a class="menu-item" [class.menu-item--active]="$index == currentMenu()" (click)="setCurrentMenu($index)">
+    <a class="menu-item"
+      [class.menu-item--active]="$index == currentMenu()"
+      (click)="setCurrentMenu($index)">
       <span class="material-symbols-rounded">{{ menu.icon }}</span>
       <span class="menu-item-name">{{ menu.name }}</span>
     </a>

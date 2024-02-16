@@ -1,4 +1,4 @@
-<div class="game-card">
+<div class="game-card" (click)="card().onClick()">
   <img [src]="card().imageUrl" alt="Game card image" class="game-card__image">
   <h3 class="game-card__name">{{ card().name }}</h3>
   <app-game-schedule-info class="game-card__info"
@@ -8,7 +8,7 @@
   </app-game-schedule-info>
   <div class="game-card__buttons">
     @for (button of buttons(); track $index) {
-      <button AFButton [theme]="button.theme" (click)="button.onClick()">{{button.name}}</button>
+      <button AFButton [theme]="button.theme" (click)="button.onClick($event)">{{button.name}}</button>
     }
   </div>
 </div>

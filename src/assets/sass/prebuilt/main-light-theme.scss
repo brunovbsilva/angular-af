@@ -1,0 +1,16 @@
+@use '../palettes';
+@use '../theming';
+
+$primary: theming.define-palette(palettes.$green-palette);
+$accent:  theming.define-palette(palettes.$purple-palette);
+$warn:    theming.define-palette(palettes.$orange-palette);
+$error:   theming.define-palette(palettes.$red-palette);
+
+$theme: theming.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    error: $error
+  ),
+));

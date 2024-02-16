@@ -1,0 +1,27 @@
+@import '../../../../assets/sass/style';
+
+.user-card {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+  border-radius: .5rem;
+  @include AF-Shadow;
+  .user-card__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .user-card__data {
+    flex: 1 1 100px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .user-card__chips {
+    display: flex;
+    gap: .5rem;
+    flex-basis: 100%;
+  }
+}

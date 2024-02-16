@@ -1,7 +1,8 @@
-@import 'palettes';
+@use 'palettes';
+@use 'sass:map';
 
-$Low-gray: map-get($AF-black, 50);
-$Mid-gray: map-get($AF-black, 100);
+$Low-gray: map.get(palettes.$gray-palette, 50);
+$Mid-gray: map.get(palettes.$gray-palette, 100);
 
 @mixin AF-Phantom {
   background: linear-gradient(to right, $Mid-gray, $Low-gray, $Low-gray, $Low-gray);

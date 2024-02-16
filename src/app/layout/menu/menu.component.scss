@@ -1,3 +1,4 @@
+@use 'sass:map';
 @import '../../../assets/sass/style';
 
 :host {
@@ -10,12 +11,12 @@
   display: flex;
   width: 100vw;
   @include AF_Shadow;
-  background: map-get($AF-Primary, contrast, 500);;
+  background: map.get($green-palette, contrast, 500);;
   .menu-item {
     position: relative;
     flex: 1 1 100px;
     text-decoration: none;
-    color: map-get($AF-Primary, contrast, 100);
+    color: map.get($green-palette, contrast, 100);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +26,7 @@
       font-size: 1.25rem;
     }
     &--active {
-      color: map-get($AF-Primary, 500);
+      color: map.get($green-palette, 500);
       ::before {
         content: '';
         position: absolute;
@@ -33,7 +34,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: map-get($AF-Primary, 500);
+        background-color: map.get($green-palette, 500);
       }
     }
   }
